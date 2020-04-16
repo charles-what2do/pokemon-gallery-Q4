@@ -1,24 +1,15 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
-import pokemonData from "../pokemon/pokemon";
+import "./PokemonGallery.css";
 
-function displayPokemonCards(pokemons) {
-  return pokemons.map((pokemon) => {
-    return <PokemonCard pokemon={pokemon} />;
-  });
-}
-
-function PokemonGallery() {
+const PokemonGallery = ({ pokemons }) => {
   return (
-    <div>
-      <img
-        className="header"
-        src={process.env.PUBLIC_URL + "pokemon-750.jpg"}
-        alt="Pokemon Header"
-      />
-      <div className="pokemon-cards">{displayPokemonCards(pokemonData)}</div>
+    <div className="pokemon-cards">
+      {pokemons.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+      ))}
     </div>
   );
-}
+};
 
 export default PokemonGallery;
